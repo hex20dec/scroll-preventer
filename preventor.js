@@ -1,17 +1,18 @@
   function ScrollbarsClass(){
     var self = this;
-    this.listener = false;
+    this.runOnce = false;
 
     //call .deny when modal is in focus
     this.deny = function(){
-      $("html").height($(window).height());
-      $("body").css("overflow-y","hidden");
-      if(this.listener == false){
-        this.listener = true;
+      if(this.runOnce == false){
+        this.runOnce = true;
+        this.scrollPosition = $(window).scrollTop();
         $(window).on("resize.scrollbars", function(){
           self.deny();
         });
       }
+      $("html").height($(window).height());
+      $("body").css("overflow-y","hidden");
     }
 
     //call .allow when the modal is removed from focus
@@ -19,7 +20,8 @@
       $("html").css("height", "100%");
       $("body").css("overflow-y","");
       $(window).off("resize.scrollbars");
-      this.listener = false;
+      $(window).scrollTop(this.scrollPosition);
+      this.runOnce = false;
     }
   }
 
