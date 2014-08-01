@@ -21,7 +21,6 @@
 
     //call .allow when the modal is removed from focus
     this.allow = function(){
-      // $("html").css("height", "100%");
       $("body").css({
         "height": "100%",
         "overflow-y": "",
