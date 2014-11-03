@@ -13,6 +13,7 @@
       }
       $("body").css({
         "height": $(window).height()+this.scrollPosition+"px",
+        "width" : "100%",
         "overflow-y": "hidden",
         "position": "absolute",
         "top": "-"+this.scrollPosition+"px"
